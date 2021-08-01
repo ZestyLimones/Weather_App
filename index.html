@@ -4,43 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>What's the Weather?</title>
 </head>
 <body>
-    <header>
-        <h1 class="page-title">
+    <header class="container-fluid text-center text-white bg-primary p-2">
+        <h1 id="page-title">
             Weather Dashboard
         </h1>
     </header>
-    <main class="container flex-row justify-space-between">
-        <div class="card" id="search-bar">
-            <h3 class="card-header">Search for a City:</h3>
-            <form id='search-form' class='card-body'>
-                <input type="text" class="form-input" name="city-search" id="city-search" placeholder="city name"/>
-                <button type="submit" class="btn">Search</button>
-            </form>
-        </div>
-        <div class="card" id="previous-searches">
-            <!-- previous search results will populate here from local storage -->
-        </div>
-        <div  id="search-results">
-            <div class="card" id="todays-weather">
-                <div class="card-body">
-                    <h3 id="city-name"></h3>
-                    <img id="weather-img" alt" />
-                    <p id="temp"></p>
-                    <p id="humidity"></p>
-                    <p id="wind-speed"></p>
-                    <p id="UV-index"></p>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 bg-light card">
+                <h3 class="card-header mt-1">Search for a City:</h3>
+                <form id='search-form' class='input-group mb-5 card-body'>
+                    <input type="text" class="form-control form-input" name="city-search" id="city-search" placeholder="city name"/>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <div class="card " id="previous-searches">
+                    <p>this is a place </p>
+                    <p>this is another place</p>
                 </div>
-                <!-- today's forcast results here  -->
             </div>
-            <div class="card-body"  id="five-day-forcast">
-                <!-- five day forcast results here -->
+
+            <div class="col-lg-9" id="search-results">
+                <div class="row">
+                    <div class="col-12 m-3 card" id="todays-weather">
+                        <div class="card-body">
+                            <h3 id="city-name"></h3>
+                            <img id="weather-img" alt" />
+                            <p id="temp"></p>
+                            <p id="humidity"></p>
+                            <p id="wind-speed"></p>
+                            <p id="UV-index"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row card" id="five-day-forcast">
+                    <h4>Forcast</h4>
+                    <div class="col-12 card-body"  id="five-day-forcast">
+                    <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
+                    <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
+                    <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
+                    <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
+                    <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
+                    </div>
+                </div>
+                    
             </div>
         </div>
+
+        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>

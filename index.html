@@ -17,21 +17,25 @@
     </header>
     <main class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 bg-light card">
-                <h3 class="card-header mt-1">Search for a City:</h3>
-                <form id='search-form' class='input-group mb-5 card-body'>
-                    <input type="text" class="form-control form-input" name="city-search" id="city-search" placeholder="city name"/>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-                <div class="card " id="previous-searches">
-                    <p>this is a place </p>
-                    <p>this is another place</p>
+            <div class="col-3 bg-light">
+                <div id="search-box card">
+                    <h3 class="card-header m-1">Search for a City:</h3>
+                    <form id='search-form' class='input-group card-body'>
+                        <input type="text" class="form-control form-input" name="city-search" id="city-search" placeholder=" Enter city name"/>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+
+                <div class="mt-5 card" id="previous-searches">
+                    <h3 class="card-header m-1 ">Previous Results</h3>
+                    <p class="ms-1">this is a place </p>
+                    <p class="ms-1">this is another place</p>
                 </div>
             </div>
-
-            <div class="col-lg-9" id="search-results">
-                <div class="row">
-                    <div class="col-12 m-3 card" id="todays-weather">
+        
+            <div class="col-9" id="search-results">
+                <div class="row card m-3">
+                    <div class="col-12 card" id="todays-weather">
                         <div class="card-body">
                             <h3 id="city-name"></h3>
                             <img id="weather-img" alt" />
@@ -42,9 +46,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row card" id="five-day-forcast">
+                <div class="row card m-3" id="five-day-forcast">
                     <h4>Forcast</h4>
-                    <div class="col-12 card-body"  id="five-day-forcast">
+                    <div class="col-12 m-3 card-body"  id="five-day-forcast">
                     <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
                     <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>
                     <div class="col-md-2 forcast bg-dark text-white m-2 rounded"></div>

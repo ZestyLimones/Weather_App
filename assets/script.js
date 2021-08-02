@@ -25,7 +25,6 @@ var formSubmitHandler = function (event) {
   if (citySearch) {
     getWeather(citySearch);
 
-    searchResults.textContent = "";
     citySearchEl.value = "";
   } else {
     alert("Please enter a city");
@@ -68,25 +67,53 @@ var displayWeather = function (cityName) {
     apiKey +
     "&units=imperial";
 
-  var currentWeather = function (cityName) {
+  var currentWeather = function () {
+    console.log(cityName);
     var currentCityName = cityName.name;
     console.log(currentCityName);
+    cityNameEl.textContent = currentCityName;
+
+    var weatherIcon = cityName.weather[0].icon;
+    weatherImgEl.setAttribute(
+      "src",
+      "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"
+    );
 
     var currentCityTemp = cityName.main.temp;
     console.log(currentCityTemp);
+    cityTempEl.textContent = "Temperature: " + currentCityTemp + "";
 
-    var currentCityHumidity = cityName.main.humidity + "%";
+    var currentCityHumidity = cityName.main.humidity;
     console.log(currentCityHumidity);
+    cityHumidityEl.textContent = "Humidity: " + currentCityHumidity + "%";
+
+    var currentCityWindSpeed = cityName.wind.speed;
+    console.log(currentCityWindSpeed);
+    windSpeedEl.textContent = "Wind Speed: " + currentCityWindSpeed + "MPH";
 
     fetch(uvApiUrl).then(function (response) {
       response.json().then(function (data) {
         console.log(data);
         var currentUvIndex = data.current.uvi;
         console.log(currentUvIndex);
+        uvIndexEl.textContent = currentUvIndex;
+        if (currentUvIndex < 3) {
+          uvIndexEl.setAttribute("class", "bg-success text-white");
+        } else if (currentUvIndex < 6) {
+          uvIndexEl.setAttribute("class", "bg-warning");
+        } else {
+          uvIndexEl.setAttribute("class", "bg-danger text-white");
+        }
       });
     });
+    // var previousSearches = [];
+    // previousSearches.push(cityName.name);
+    // console.log(previousSearches);
+    localStorage.setItem("City", cityName.name);
   };
   currentWeather(cityName);
 };
+
+console.log(forcastEl.length);
 
 searchFormEl.addEventListener("submit", formSubmitHandler);

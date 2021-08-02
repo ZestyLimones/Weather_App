@@ -54,6 +54,14 @@ var getWeather = function (city) {
     });
 };
 
+var previousSearches = [];
+
+var previousSearchResults = function () {
+  var previousInput = JSON.parse(localStorage.getItem("city"));
+  console.log(previousInput);
+  console.log("here");
+};
+
 var displayWeather = function (cityName) {
   console.log(cityName.coord.lon);
   console.log(cityName.coord.lat);
@@ -107,10 +115,9 @@ var displayWeather = function (cityName) {
       });
     });
 
-    // var previousSearches = [];
-    // previousSearches.push(cityName.name);
-    // console.log(previousSearches);
-    localStorage.setItem("City", cityName.name);
+    previousSearches.push(cityName.name);
+    console.log(previousSearches);
+    localStorage.setItem("City", JSON.stringify(previousSearches));
   };
   var forcastWeather = function (cityName) {
     fetch(uvApiUrl).then(function (response) {
@@ -155,19 +162,12 @@ var displayWeather = function (cityName) {
 
           fiveDayForcast.appendChild(forcastDiv);
         }
-        // uvIndexEl.textContent = currentUvIndex;
-        // if (currentUvIndex < 3) {
-        //   uvIndexEl.setAttribute("class", "bg-success text-white");
-        // } else if (currentUvIndex < 6) {
-        //   uvIndexEl.setAttribute("class", "bg-warning");
-        // } else {
-        //   uvIndexEl.setAttribute("class", "bg-danger text-white");
-        // }
       });
     });
   };
   currentWeather(cityName);
   forcastWeather(cityName);
+  previousSearchResults();
 };
 
 searchFormEl.addEventListener("submit", formSubmitHandler);

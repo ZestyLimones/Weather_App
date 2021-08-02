@@ -106,12 +106,47 @@ var displayWeather = function (cityName) {
         }
       });
     });
+
     // var previousSearches = [];
     // previousSearches.push(cityName.name);
     // console.log(previousSearches);
     localStorage.setItem("City", cityName.name);
   };
+  var forcastWeather = function (cityName) {
+    fetch(uvApiUrl).then(function (response) {
+      response.json().then(function (data) {
+        var forcastArray = data.daily;
+        console.log(forcastArray);
+
+        for (var i = 1; i < 6; i++) {
+          const element = forcastArray[i];
+
+          var forcastDiv = document.createElement("div");
+          forcastDiv.setAttribute(
+            "class",
+            "daily-forcast col-md-2 forcast bg-dark text-white m-2 rounded"
+          );
+          console.log(element.temp.day);
+          var forcastTemp = element.temp.day;
+          var forcastTempDiv = document.createElement("div");
+          forcastTempDiv.textContent = forcastTemp;
+          forcastDiv.appendChild(forcastTempDiv);
+
+          fiveDayForcast.appendChild(forcastDiv);
+        }
+        // uvIndexEl.textContent = currentUvIndex;
+        // if (currentUvIndex < 3) {
+        //   uvIndexEl.setAttribute("class", "bg-success text-white");
+        // } else if (currentUvIndex < 6) {
+        //   uvIndexEl.setAttribute("class", "bg-warning");
+        // } else {
+        //   uvIndexEl.setAttribute("class", "bg-danger text-white");
+        // }
+      });
+    });
+  };
   currentWeather(cityName);
+  forcastWeather(cityName);
 };
 
 console.log(forcastEl.length);

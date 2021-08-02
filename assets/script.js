@@ -124,13 +124,34 @@ var displayWeather = function (cityName) {
           var forcastDiv = document.createElement("div");
           forcastDiv.setAttribute(
             "class",
-            "daily-forcast col-md-2 forcast bg-dark text-white m-2 rounded"
+            "col-3 forcast bg-primary text-white m-2 p-2 rounded"
           );
+
+          var forcastIcon = element.weather[0].icon;
+          var forcastIconImg = document.createElement("img");
+          forcastIconImg.setAttribute(
+            "src",
+            "http://openweathermap.org/img/wn/" + forcastIcon + "@2x.png"
+          );
+          forcastDiv.appendChild(forcastIconImg);
+
           console.log(element.temp.day);
           var forcastTemp = element.temp.day;
           var forcastTempDiv = document.createElement("div");
-          forcastTempDiv.textContent = forcastTemp;
+          forcastTempDiv.textContent = "temp: " + forcastTemp;
           forcastDiv.appendChild(forcastTempDiv);
+
+          console.log(element.wind_speed);
+          var forcastWindSpeed = element.wind_speed;
+          var forcastWindSpeedDiv = document.createElement("div");
+          forcastWindSpeedDiv.textContent = "Wind: " + forcastWindSpeed + "MPH";
+          forcastDiv.appendChild(forcastWindSpeedDiv);
+
+          console.log(element.humidity);
+          var forcastHumidity = element.humidity;
+          var forcastHumidityDiv = document.createElement("div");
+          forcastHumidityDiv.textContent = "Humidity: " + forcastHumidity + "%";
+          forcastDiv.appendChild(forcastHumidityDiv);
 
           fiveDayForcast.appendChild(forcastDiv);
         }
@@ -148,7 +169,5 @@ var displayWeather = function (cityName) {
   currentWeather(cityName);
   forcastWeather(cityName);
 };
-
-console.log(forcastEl.length);
 
 searchFormEl.addEventListener("submit", formSubmitHandler);

@@ -1,15 +1,9 @@
-var searchBarEl = document.querySelector("#search-bar");
-var formInputEl = document.querySelector(".form-input");
 var searchFormEl = document.querySelector("#search-form");
 var citySearchEl = document.querySelector("#city-search");
-var searchBtnEl = document.querySelector(".btn");
 var searchResults = document.querySelector("#search-results");
-var todaysWeather = document.querySelector("#todays-weather");
 var fiveDayForcast = document.querySelector("#five-day-forcast");
-var forcastEl = document.querySelector(".forcast");
 var futureEl = document.querySelector("#future");
 var previousCities = document.querySelector("#previous-searches");
-
 var cityNameEl = document.querySelector("#city-name");
 var weatherImgEl = document.querySelector("#weather-img");
 var cityTempEl = document.querySelector("#temp");
@@ -36,7 +30,6 @@ var formSubmitHandler = function (event) {
 };
 
 var getWeather = function (event, city) {
-  console.log(event.target);
   if (!city) {
     city = event.target.textContent;
   } else {
